@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="6.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageReference Include="xunit" Version="2.5.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BriquePro.Application\BriquePro.Application.csproj" />
+    <ProjectReference Include="..\BriquePro.Domain\BriquePro.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Application\Commands\Inventory\" />
+    <Folder Include="Application\Commands\Wallet\" />
+    <Folder Include="Application\Commands\User\" />
+    <Folder Include="Application\Mappings\" />
+    <Folder Include="Application\Validators\" />
+    <Folder Include="Application\Queries\" />
+    <Folder Include="Application\Services\" />
+    <Folder Include="Domain\Entities\" />
+    <Folder Include="Domain\Enums\" />
+    <Folder Include="Domain\Events\" />
+    <Folder Include="Domain\Specifications\" />
+    <Folder Include="Domain\ValueObjects\Common\" />
+    <Folder Include="Domain\ValueObjects\Inventory\" />
+    <Folder Include="Domain\ValueObjects\Wallet\" />
+    <Folder Include="Domain\ValueObjects\User\" />
+    <Folder Include="Common\" />
+    <Folder Include="Helpers\" />
+  </ItemGroup>
+
+</Project>

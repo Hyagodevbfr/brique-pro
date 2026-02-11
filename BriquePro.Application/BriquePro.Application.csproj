@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BriquePro.Domain\BriquePro.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Common\" />
+    <Folder Include="DTOs\Common\" />
+    <Folder Include="DTOs\Inventory\" />
+    <Folder Include="DTOs\Wallet\" />
+    <Folder Include="DTOs\User\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Commands\" />
+    <Folder Include="Behaviors\" />
+    <Folder Include="Queries\Wallet\" />
+    <Folder Include="Queries\User\" />
+    <Folder Include="Services\" />
+    <Folder Include="Validators\Inventory\" />
+    <Folder Include="Validators\Wallet\" />
+    <Folder Include="Validators\User\" />
+  </ItemGroup>
+
+</Project>
