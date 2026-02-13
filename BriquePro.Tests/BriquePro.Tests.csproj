@@ -27,21 +27,20 @@
 
   <ItemGroup>
     <Folder Include="Application\Commands\Inventory\" />
-    <Folder Include="Application\Commands\Wallet\" />
     <Folder Include="Application\Commands\User\" />
+    <Folder Include="Application\Commands\Wallet\" />
     <Folder Include="Application\Mappings\" />
-    <Folder Include="Application\Validators\" />
-    <Folder Include="Application\Queries\" />
     <Folder Include="Application\Services\" />
+    <Folder Include="Application\Queries\" />
+    <Folder Include="Application\Validators\" />
+    <Folder Include="Common\" />
     <Folder Include="Domain\Entities\" />
     <Folder Include="Domain\Enums\" />
     <Folder Include="Domain\Events\" />
     <Folder Include="Domain\Specifications\" />
-    <Folder Include="Domain\ValueObjects\Common\" />
     <Folder Include="Domain\ValueObjects\Inventory\" />
-    <Folder Include="Domain\ValueObjects\Wallet\" />
     <Folder Include="Domain\ValueObjects\User\" />
-    <Folder Include="Common\" />
+    <Folder Include="Domain\ValueObjects\Wallet\" />
     <Folder Include="Helpers\" />
   </ItemGroup>
 
