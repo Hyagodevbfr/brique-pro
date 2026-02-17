@@ -13,11 +13,12 @@
     <Folder Include="Services\" />
     <Folder Include="Repositories\" />
     <Folder Include="Specifications\" />
-    <Folder Include="ValueObjects\" />
-	  <Folder Include="ValueObjects\" />
-	      <Folder Include="ValueObjects\" />
     
 	  
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Flunt" Version="2.0.5" />
   </ItemGroup>
 
 </Project>
