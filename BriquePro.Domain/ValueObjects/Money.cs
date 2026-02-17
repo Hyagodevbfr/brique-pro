@@ -1,4 +1,6 @@
 ﻿
+using BriquePro.Domain.ValueObjects;
+
 namespace BriquePro.Domain.Common
 {
     public sealed class Money : ValueObject
@@ -8,9 +10,17 @@ namespace BriquePro.Domain.Common
 
         const int MAX_DECIMAL_PLACES = 4;
 
-        public Money(decimal amount, string currency)
+        private Money() { }
+
+        private Money(decimal amount, string currency)
         {
-            if (amount < 0)            
+            Value = amount;
+            Currency = currency;
+        }
+
+        public static Money Create(decimal amount, string currency)
+        {
+            if (amount < 0)
                 throw new ArgumentException("Value cannot be negative.", nameof(amount));
 
             if (decimal.Round(amount, MAX_DECIMAL_PLACES) != amount)
@@ -19,17 +29,13 @@ namespace BriquePro.Domain.Common
             if (string.IsNullOrWhiteSpace(currency))
                 throw new ArgumentException("Currency cannot be null or whitespace.", nameof(currency));
 
-            currency = currency.Trim();
+            currency = currency.Trim().ToUpperInvariant();
 
-            if (currency.Length != 3)
-                throw new ArgumentException("Currency must be a 3-letter code.", nameof(currency));
-
-            if (!currency.All(char.IsLetter))
-                throw new ArgumentException("Currency must only contain letters.");
-
-            Value = amount;
-            Currency = currency.ToUpperInvariant();
-
+            if (currency.Length != 3 || !currency.All(char.IsLetter))
+                throw new ArgumentException("Currency must be a 3-letter ISO code.", nameof(currency));
+            
+    
+            return new Money(amount, currency);
         }
 
         protected override IEnumerable<object> GetAtomicValues()
