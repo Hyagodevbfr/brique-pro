@@ -12,7 +12,7 @@ namespace BriquePro.Tests.Domain.ValueObjects.Common
             var currency = "USD";
 
             // Act
-            var money = new Money(amount, currency);
+            var money = Money.Create(amount, currency);
 
             // Assert
             Assert.NotNull(money);
@@ -28,7 +28,7 @@ namespace BriquePro.Tests.Domain.ValueObjects.Common
         public void Constructor_WithVariousValidAmounts_CreatesMoneyInstance(decimal validAmount)
         {
             //Act
-            var money = new Money(validAmount, "EUR");
+            var money = Money.Create(validAmount, "EUR");
 
             //Assert
             Assert.Equal(validAmount, money.Value);
@@ -46,7 +46,7 @@ namespace BriquePro.Tests.Domain.ValueObjects.Common
             var amount = 100.00m;
 
             //Act
-            var money = new Money(amount, currency);
+            var money = Money.Create(amount, currency);
 
             //Assert
             Assert.Equal(currency.ToUpperInvariant(), money.Currency);
@@ -61,7 +61,7 @@ namespace BriquePro.Tests.Domain.ValueObjects.Common
         public void Constructor_WithLowercaseCurrency_ConvertsToUppercase(string currency)
         {
             //Act
-            var money = new Money(50m, currency);
+            var money = Money.Create(50m, currency);
 
             //Assert
             Assert.Equal(currency.ToUpperInvariant(), money.Currency);
@@ -75,7 +75,7 @@ namespace BriquePro.Tests.Domain.ValueObjects.Common
         public void Constructor_WithCurrencyHavingWhitespace_TrimsAndConvertsToUppercase(string currencyWithWhitespace)
         {
             //Act
-            var money = new Money(100m, currencyWithWhitespace);
+            var money = Money.Create(100m, currencyWithWhitespace);
 
             //Assert
             Assert.Equal("USD", money.Currency);
@@ -85,7 +85,7 @@ namespace BriquePro.Tests.Domain.ValueObjects.Common
         public void Constructor_WithZeroAmount_IsValid()
         {
             //Act
-            var money = new Money(0m, "BRL");
+            var money = Money.Create(0m, "BRL");
 
             //Assert
             Assert.Equal(0m, money.Value);
@@ -98,7 +98,7 @@ namespace BriquePro.Tests.Domain.ValueObjects.Common
             var amountWith4Decimals = 123.4567m;
 
             //Act
-            var money = new Money(amountWith4Decimals, "BRL");
+            var money = Money.Create(amountWith4Decimals, "BRL");
 
             //Assert
             Assert.Equal(amountWith4Decimals, money.Value);
@@ -113,7 +113,7 @@ namespace BriquePro.Tests.Domain.ValueObjects.Common
 
             //Act & Assert
             var exception = Assert.Throws<ArgumentException>(
-                () => new Money(negativeAmount, "USD")
+                () => Money.Create(negativeAmount, "USD")
             );
 
             Assert.Contains("negative", exception.Message);
@@ -129,7 +129,7 @@ namespace BriquePro.Tests.Domain.ValueObjects.Common
         {
             //Act & Assert
             Assert.Throws<ArgumentException>(
-                () => new Money(negativeAmount, "EUR")
+                () => Money.Create(negativeAmount, "EUR")
             );
         }
     }
