@@ -1,5 +1,4 @@
-﻿
-using BriquePro.Domain.ValueObjects;
+﻿using BriquePro.Domain.Common.ErrorsHandling;
 
 namespace BriquePro.Domain.Common
 {
@@ -18,21 +17,21 @@ namespace BriquePro.Domain.Common
             Currency = currency;
         }
 
-        public static Money Create(decimal amount, string currency)
+        public static Result<Money> Create(decimal amount, string currency)
         {
             if (amount < 0)
-                throw new ArgumentException("Value cannot be negative.", nameof(amount));
+                return Result<Money>.Failure(new Error("Invalid.Value", "Amount cannot be negative."));
 
             if (decimal.Round(amount, MAX_DECIMAL_PLACES) != amount)
-                throw new ArgumentException($"Money cannot have more than {MAX_DECIMAL_PLACES} decimal places.", nameof(amount));
+                return Result<Money>.Failure(new Error("Invalid.Value", $"Amount cannot have more than {MAX_DECIMAL_PLACES} decimal places."));
 
             if (string.IsNullOrWhiteSpace(currency))
-                throw new ArgumentException("Currency cannot be null or whitespace.", nameof(currency));
+                return Result<Money>.Failure(new Error("Invalid.Currency", "Currency cannot be null or whitespace."));
 
             currency = currency.Trim().ToUpperInvariant();
 
             if (currency.Length != 3 || !currency.All(char.IsLetter))
-                throw new ArgumentException("Currency must be a 3-letter ISO code.", nameof(currency));
+                return Result<Money>.Failure(new Error("Invalid.Currency", "Currency must be a 3-letter ISO code."));
             
     
             return new Money(amount, currency);
